@@ -1,5 +1,5 @@
 .header {
-  background: #C7B7A3;
+  background: white;
   /* padding: 0; */
   border-bottom: 1px solid #6D2932;
 }
@@ -10,7 +10,7 @@
 
 .header a:hover {
   background: #6D2932;
-  color: #C7B7A3;
+  color: white;
   cursor: pointer;
 }
 
@@ -43,7 +43,7 @@
 .menu {
   position: absolute;
   z-index: 1;
-  background-color: #E8D8C4;
+  background-color: whitesmoke;
   display: none;
 }
 
@@ -58,7 +58,7 @@
 
 .cart_count {
   background-color: #6D2932;
-  color: #C7B7A3;
+  color: white;
   padding: 0.1rem 0.45rem;
   border-radius: 100rem;
   font-size: 0.9rem;
