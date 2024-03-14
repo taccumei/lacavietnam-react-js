@@ -14,7 +14,6 @@ export default function Thumbnails({foods}) {
               className={classes.image}
               src={`/foods/${food.imageUrl}`}
               alt={food.name} />
-          </Link>
           <div className={classes.content}>
             <div className={classes.name}>{food.name}</div>
             <span
@@ -38,7 +37,8 @@ export default function Thumbnails({foods}) {
             <div className={classes.price}>
               <Price price={food.price}/>
             </div>
-          </div>
+            </div>
+          </Link>
         </li>
       ))}
     </ul>
