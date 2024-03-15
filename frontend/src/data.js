@@ -112,6 +112,7 @@ export const sample_foods = [
 ];
 
 export const sample_tags = [
+  { name: 'All', count: 4 },
   { name: 'Starters', count: 6 },
   { name: 'Drinks', count: 4 },
   { name: 'Noodle Soups', count: 2 },
