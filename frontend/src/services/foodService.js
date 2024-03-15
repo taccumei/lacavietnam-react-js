@@ -7,4 +7,4 @@ export const search = async searchTerm =>
     item.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-export const getAllTags = async ()=> sample_tags
+export const getAllTags = async () => sample_tags;

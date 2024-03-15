@@ -1,0 +1,20 @@
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+}
+
+.container a{
+  border-radius: 1rem;
+  padding: 0.2rem 1rem;
+  margin: 0 10px;
+  color: #561C24;
+  background-color: whitesmoke;
+  font-weight: bold;
+}
+
+.container a:hover{
+  background-color: #561C24;
+  color: whitesmoke;
+  cursor: pointer;
+}
