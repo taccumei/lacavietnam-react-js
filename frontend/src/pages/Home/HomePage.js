@@ -4,6 +4,7 @@ import Thumbnails from '../../components/Thumbnails/Thumbnails';
 import Search from '../../components/Search/Search';
 import { useParams } from 'react-router-dom';
 import { search } from '../../services/foodService';
+import Tags from '../../components/Tags/Tags';
 
 const initialState = { foods: [] };
 
@@ -20,6 +21,7 @@ const reducer = (state, action) => {
 export default function HomePage() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { foods } = state;
+  // const {tags} = 
   const { searchTerm } = useParams();
 
   useEffect(() => {
@@ -30,7 +32,8 @@ export default function HomePage() {
 
   return (
     <div>
-      <Search/>
+      <Search />
+      <Tags />
       <Thumbnails foods={foods} />
     </div>
   )
