@@ -19,7 +19,7 @@ export const sample_foods = [
     origins: ['Northern'],
     stars: 5,
     imageUrl: 'Pho_Bo.png',
-    tags: ['Noodle Soups'],
+    tags: ['NoodleSoups'],
   },
   {
     id: '3',
@@ -30,7 +30,7 @@ export const sample_foods = [
     origins: ['Northern'],
     stars: 3.5,
     imageUrl: 'Pho_Ga.png',
-    tags: ['Noodle Soups'],
+    tags: ['NoodleSoups'],
   },
   {
     id: '4',
@@ -85,7 +85,7 @@ export const sample_foods = [
     origins: ['Central'],
     stars: 4.0,
     imageUrl: 'Bun_Bo_Hue.png',
-    tags: ['Noodle Soups'],
+    tags: ['NoodleSoups'],
   },
   {
     id: '9',
@@ -112,11 +112,11 @@ export const sample_foods = [
 ];
 
 export const sample_tags = [
-  { name: 'All', count: 4 },
-  { name: 'Starters', count: 6 },
-  { name: 'Drinks', count: 4 },
-  { name: 'Noodle Soups', count: 2 },
-  { name: 'Rice', count: 3 },
+  { name: 'All', count: 10 },
+  { name: 'Starters', count: 4 },
+  { name: 'Drinks', count: 2 },
+  { name: 'NoodleSoups', count: 3 },
+  { name: 'Rice', count: 1 },
 ];
 
 export const sample_users = [

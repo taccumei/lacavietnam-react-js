@@ -37,7 +37,7 @@ export default function Thumbnails({foods}) {
             <div className={classes.price}>
               <Price price={food.price}/>
             </div>
-            </div>
+          </div>
           </Link>
         </li>
       ))}
