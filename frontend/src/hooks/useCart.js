@@ -5,7 +5,8 @@ const CartContext = createContext(null);
 
 export default function CartProvider({ children }) {
   
-  const [cartItems, setCartItems] = useState(sample_foods.slice(1,4).map(food=>({food, quantity: 1, price: food.price})));
+  const [cartItems, setCartItems] = useState(sample_foods.slice(1, 4).map(food => ({ food, quantity: 1, price: food.price })));
+  console.log(cartItems);
   const [totalPrice, setTotalPrice] = useState(40);
   const [totalCount, setTotalCount] = useState(3);
   
