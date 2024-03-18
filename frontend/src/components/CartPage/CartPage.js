@@ -4,6 +4,7 @@ import classes from './cartpage.module.css';
 import Title from '../Title/Title';
 import { Link } from 'react-router-dom';
 import Price from '../Price/Price';
+import NotFound from '../NotFound/NotFound';
 
 export default function CartPage() {
   const { cart, removeFromCart, changeQty } = useCart();
@@ -12,8 +13,10 @@ export default function CartPage() {
     <>
     <Title title="Cart Page" margin="1.5rem 0 0 2.5rem" />
     {
-    cart && cart.items.length > 0 &&
-      <div className={classes.container}>
+        (cart.items.length === 0)
+          ? (<NotFound messages="Cart Page is Empty" />)
+          :
+          (<div className={classes.container}>
         <ul className={classes.list}>
           {cart.items.map(item =>
             <li key={item.food.id}>
@@ -55,7 +58,8 @@ export default function CartPage() {
           <Link to="/checkout">Proceed To Checkout</Link>
           </div>
       </div>  
-      }
+          )
+    }
     </>
   )
 }

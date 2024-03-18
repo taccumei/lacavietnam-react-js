@@ -39,9 +39,9 @@ export default function HomePage() {
 
   return (
     <div>
-      <Search />
+      <Search />                                   
       <Tags tags={tags} />
-      {foods.length === 0 && <NotFound/>}
+      {foods.length === 0 && <NotFound linkText='Reset Search'/>}
       <Thumbnails foods={foods} />
     </div>
   )
