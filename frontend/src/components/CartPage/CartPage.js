@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useCart } from '../../hooks/useCart';
 import classes from './cartpage.module.css';
 import Title from '../Title/Title';
