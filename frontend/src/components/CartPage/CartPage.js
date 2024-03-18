@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom';
 import Price from '../Price/Price';
 
 export default function CartPage() {
-  const { cart } = useCart();
+  const { cart, removeFromCart, changeQty } = useCart();
+
   return (
     <>
     <Title title="Cart Page" margin="1.5rem 0 0 2.5rem" />
@@ -23,7 +24,7 @@ export default function CartPage() {
                 <Link to={`/food/${item.food.id}`}>{item.food.name}</Link>
               </div>
               <div>
-                <select>
+                <select value={item.quantity} onChange={e=>changeQty(item, Number(e.target.value))}>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -40,7 +41,7 @@ export default function CartPage() {
                 <Price price = {item.price}></Price>               
               </div>
               <div>
-                <button className={classes.remove_button}>Remove</button>
+                <button className={classes.remove_button} onClick={()=>removeFromCart(item.food.id)}>Remove</button>
               </div>
             </li>)}
         </ul>   

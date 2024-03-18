@@ -2,13 +2,21 @@ import classes from './foodpage.module.css';
 import StarRating from '../StarRating/StarRating';
 import Price from '../Price/Price';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { getById } from '../../services/foodService';
 import Tags from '../Tags/Tags';
+import { useCart } from '../../hooks/useCart';
 
 export default function FoodPage() {
   const [food, setFood] = useState({});
-  const {id} = useParams();
+  const { id } = useParams();
+  const navigate = useNavigate();
+const {addToCart} = useCart()
+
+  const handleAddToCart = () => {
+    addToCart(food);
+    navigate('/cart');
+  }
 
   useEffect(() => {
     getById(id).then(setFood);
@@ -49,7 +57,7 @@ export default function FoodPage() {
         <div className={classes.price}>
           <Price price={food.price}/>
             </div>
-            <button>Add to Cart</button>
+            <button onClick={handleAddToCart}>Add to Cart</button>
       </div>
       </div>
       )}
