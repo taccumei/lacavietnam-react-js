@@ -5,7 +5,6 @@ import Search from '../../components/Search/Search';
 import { useParams } from 'react-router-dom';
 import { search } from '../../services/foodService';
 import Tags from '../../components/Tags/Tags';
-import FoodPage from '../../components/FoodPage/FoodPage';
 
 const initialState = { foods: [], tags:[] };
 

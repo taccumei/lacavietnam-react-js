@@ -4,6 +4,7 @@ import Price from '../Price/Price';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getById } from '../../services/foodService';
+import Tags from '../Tags/Tags';
 
 export default function FoodPage() {
   const [food, setFood] = useState({});
@@ -19,29 +20,36 @@ export default function FoodPage() {
     <>
     {food && (
     <div className={classes.container}>
-          <img className={classes.image} src={`/foods/${food.imageUrl}`} alt={food.name} />
+      <img className={classes.image} src={`/foods/${food.imageUrl}`} alt={food.name}/>
       <div className={classes.content}>
         <div className={classes.title}>
-            <div className={classes.name}>{food.name}</div>
+            <span className={classes.name}>{food.name}</span>
             <span
               className={`${classes.favorite} ${food.favorite ? '' : classes.not}`}>
               ❤
-          </span>
+            </span>
         </div>
         <div className={classes.stars}>
           <StarRating stars={food.stars} />
         </div>
-        {/* <div className={classes.origins}>
-          {food.origins.map(origin=>(
-          <span key={origin}>{origin}</span>))}
-        </div> */}
+        <div className={classes.origins}>
+          {
+            food.origins?.map(origin => <span key={origin}>{origin}</span>)
+          }
+        </div>
+        <div className={classes.tags}>
+          {
+            food.tags && <Tags tags={food.tags.map(tag=>({name:tag}))} forFoodPage={true}/>
+          }
+        </div>
         <div className={classes.cook_time}>
           <span>🕒</span>
           {food.cookTime}
         </div>
         <div className={classes.price}>
           <Price price={food.price}/>
-        </div>
+            </div>
+            <button>Add to Cart</button>
       </div>
       </div>
       )}
