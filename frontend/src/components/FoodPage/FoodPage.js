@@ -6,6 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { getById } from '../../services/foodService';
 import Tags from '../Tags/Tags';
 import { useCart } from '../../hooks/useCart';
+import NotFound from '../NotFound/NotFound';
 
 export default function FoodPage() {
   const [food, setFood] = useState({});
@@ -21,12 +22,11 @@ const {addToCart} = useCart()
   useEffect(() => {
     getById(id).then(setFood);
   }, [id]);
-  console.log(food.name);
 
 
   return (
     <>
-    {food && (
+      {!food ? (<NotFound messages="Food Not Found" linkText="Back To Home Page"/>) : (
     <div className={classes.container}>
       <img className={classes.image} src={`/foods/${food.imageUrl}`} alt={food.name}/>
       <div className={classes.content}>
