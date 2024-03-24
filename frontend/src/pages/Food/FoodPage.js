@@ -28,7 +28,7 @@ const {addToCart} = useCart()
     <>
       {!food ? (<NotFound messages="Food Not Found" linkText="Back To Home Page"/>) : (
     <div className={classes.container}>
-      <img className={classes.image} src={`/foods/${food.imageUrl}`} alt={food.name}/>
+      <img className={classes.image} src={`${food.imageUrl}`} alt={food.name}/>
       <div className={classes.content}>
         <div className={classes.title}>
             <span className={classes.name}>{food.name}</span>
