@@ -11,6 +11,7 @@ import Title from '../../components/Title/Title';
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
 import OrderItemsList from '../../components/OrderItemsList/OrderItemsList';
+import Map from '../../components/Map/Map';
 
 
 export default function CheckoutPage() {
@@ -57,13 +58,13 @@ export default function CheckoutPage() {
         </div>
         <div>
           <Title title="Choose Your Location" fontSize="1.6rem" />
-          {/* <Map
+          <Map
             location={order.addressLatLng}
             onChange={latlng => {
               console.log(latlng);
               setOrder({ ...order, addressLatLng: latlng });
             }}
-          /> */}
+          />
         </div>
 
         <div className={classes.buttons_container}>
