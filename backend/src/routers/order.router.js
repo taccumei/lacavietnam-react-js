@@ -33,7 +33,25 @@ router.get('/newOrderForCurrentUser',
     const order = await getNewOrderForCurrentUser(req);
     if (order) res.send(order);
     else res.status(BAD_REQUEST).send()
-}))
+  }))
+
+router.put(
+  '/pay',
+  handler(async (req, res) => {
+    const { paymentId } = req.body;
+    const order = await getNewOrderForCurrentUser(req);
+    if (!order) {
+      res.status(BAD_REQUEST).send('Order Not Found!');
+      return;
+    }
+
+    order.paymentId = paymentId;
+    order.status = OrderStatus.PAYED;
+    await order.save();
+
+    res.send(order._id);
+  })
+  )
 
 const getNewOrderForCurrentUser = async req =>
   await OrderModel.findOne({ user: req.user.id, status: OrderStatus.NEW });

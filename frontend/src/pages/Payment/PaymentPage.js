@@ -4,6 +4,7 @@ import { getNewOrderForCurrentUser } from '../../services/orderService';
 import Title from '../../components/Title/Title.js';
 import OrderItemsList from '../../components/OrderItemsList/OrderItemsList.js';
 import Map from '../../components/Map/Map.js';
+import PaypalButtons from '../../components/PaypalButtons/PaypalButtons';
 
 export default function PaymentPage() {
   const [order, setOrder] = useState();
@@ -39,7 +40,7 @@ export default function PaymentPage() {
 
         <div className={classes.buttons_container}>
           <div className={classes.buttons}>
-            {/* <PaypalButtons order={order} /> */}
+            <PaypalButtons order={order} />
           </div>
         </div>
       </div>
