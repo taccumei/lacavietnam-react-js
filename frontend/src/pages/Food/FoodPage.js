@@ -1,12 +1,12 @@
 import classes from './foodpage.module.css';
-import StarRating from '../StarRating/StarRating';
-import Price from '../Price/Price';
+import StarRating from '../../components/StarRating/StarRating';
+import Price from '../../components/Price/Price';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getById } from '../../services/foodService';
-import Tags from '../Tags/Tags';
+import Tags from '../../components/Tags/Tags';
 import { useCart } from '../../hooks/useCart';
-import NotFound from '../NotFound/NotFound';
+import NotFound from '../../components/NotFound/NotFound';
 
 export default function FoodPage() {
   const [food, setFood] = useState({});

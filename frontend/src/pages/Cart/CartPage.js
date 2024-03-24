@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useCart } from '../../hooks/useCart';
 import classes from './cartpage.module.css';
-import Title from '../Title/Title';
+import Title from '../../components/Title/Title';
 import { Link } from 'react-router-dom';
-import Price from '../Price/Price';
-import NotFound from '../NotFound/NotFound';
+import Price from '../../components/Price/Price';
+import NotFound from '../../components/NotFound/NotFound';
 
 export default function CartPage() {
   const { cart, removeFromCart, changeQty } = useCart();
@@ -21,7 +21,7 @@ export default function CartPage() {
           {cart.items.map(item =>
             <li key={item.food.id}>
               <div>
-                <img src={`/foods/${item.food.imageUrl}`} alt={item.food.name} />
+                <img src={`${item.food.imageUrl}`} alt={item.food.name} />
               </div>
               <div>
                 <Link to={`/food/${item.food.id}`}>{item.food.name}</Link>

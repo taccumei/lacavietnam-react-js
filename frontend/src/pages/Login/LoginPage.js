@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { useAuth } from '../../../hooks/useAuth';
+import { useAuth } from '../../hooks/useAuth';
 import classes from './loginpage.module.css';
-import Title from '../../../components/Title/Title';
-import Input from '../../../components/Input/Input';
-import Button from '../../../components/Button/Button';
+import Title from '../../components/Title/Title';
+import Input from '../../components/Input/Input';
+import Button from '../../components/Button/Button';
 
 export default function LoginPage() {
 
