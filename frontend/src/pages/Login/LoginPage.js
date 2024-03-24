@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams, Link } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import classes from './loginpage.module.css';
 import Title from '../../components/Title/Title';
@@ -58,6 +58,13 @@ export default function LoginPage() {
             error={errors.password}
           />
           <Button type="submit" text="Login" />
+          
+          <div className={classes.register}>
+            New user ? &nbsp;
+            <Link to={`/register${returnUrl ? 'returnUrl=' + returnUrl : ''}`}>
+              Register here
+            </Link>
+          </div>
         </form>
       </div>
 
