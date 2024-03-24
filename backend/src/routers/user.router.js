@@ -21,6 +21,35 @@ router.post('/login',
   res.status(BAD_REQUEST).send('Username or password is invalid');
 }));
 
+router.post(
+  '/register',
+  handler(async (req, res) => {
+    const { name, email, password, address } = req.body;
+
+    const user = await UserModel.findOne({ email });
+
+    if (user) {
+      res.status(BAD_REQUEST).send('User already exists, please login!');
+      return;
+    }
+
+    const hashedPassword = await bcrypt.hash(
+      password,
+      PASSWORD_HASH_SALT_ROUNDS
+    );
+
+    const newUser = {
+      name,
+      email: email.toLowerCase(),
+      password: hashedPassword,
+      address,
+    };
+
+    const result = await UserModel.create(newUser);
+    res.send(generateTokenResponse(result));
+
+  })
+);
 
 const generateTokenResponse = user => {
   const token = jwt.sign(

@@ -17,6 +17,16 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const register = async data => {
+    try {
+      const user = await userService.register(data);
+      setUser(user);
+      toast.success('Register Successful');
+    } catch (err) {
+      toast.error(err.response.data);
+    }
+  };
+  
   const logout = () => {
     userService.logout();
     setUser('null');
