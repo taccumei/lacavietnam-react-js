@@ -33,7 +33,7 @@ export const AuthProvider = ({ children }) => {
     toast.success('Log out successfully!')
   };
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, login, logout, register }}>
       {children}
     </AuthContext.Provider>
   )

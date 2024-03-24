@@ -6,6 +6,7 @@ import handler from 'express-async-handler';
 import { UserModel } from "../Models/user.model.js";
 import bcrypt from 'bcryptjs';
 
+const PASSWORD_HASH_SALT_ROUNDS = 10;
 
 const router = Router();
 router.post('/login',

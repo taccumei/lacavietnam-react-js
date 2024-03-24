@@ -6,7 +6,7 @@ import classes from './registerpage.module.css';
 import Button from '../../components/Button/Button';
 import { Link } from 'react-router-dom';
 import { useSearchParams, useNavigate } from 'react-router-dom';
-import { useAuth } from '../../hooks/useAuth';
+import { useAuth } from '../../hooks/useAuth.js';
 
 export default function RegisterPage() {
   const [params] = useSearchParams();
