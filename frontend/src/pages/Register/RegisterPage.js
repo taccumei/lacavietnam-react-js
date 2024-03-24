@@ -14,6 +14,7 @@ export default function RegisterPage() {
   const { user } = auth;
   const navigate = useNavigate();
   const returnUrl = params.get('returnUrl');
+  
   useEffect(() => {
     if (!user) return;
     returnUrl ? navigate(returnUrl) : navigate('/');
