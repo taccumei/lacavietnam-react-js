@@ -20,8 +20,9 @@ export default function LoginPage() {
   const [params] = useSearchParams();//giving us all the query params
   const returnUrl = params.get('returnUrl');
 
+
   useEffect(() => {
-    if (!user) console.log({user}); return;
+    if (!user) return;
     returnUrl ? navigate(returnUrl) : navigate('/');
   }, [user]);
   //there's no user->stay in the login page

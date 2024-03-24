@@ -5,8 +5,8 @@ import { useCart } from '../../hooks/useCart';
 import { useAuth } from '../../hooks/useAuth';
 
 export default function Header() {
-  const { cart } = useCart();
   const { user, logout } = useAuth();
+  const { cart } = useCart();
    // const user = {
   //   name: 'Tram',
   // };
@@ -37,7 +37,7 @@ export default function Header() {
               </div>
             </li> 
           ) : (
-              <Link to="/login">Logins</Link>
+              <Link to="/login">Login</Link>
             )}
             <li>
               <Link to="/cart">
