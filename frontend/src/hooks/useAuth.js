@@ -1,8 +1,8 @@
-import { useState, createContext, useContext } from "react";
-import * as userService from '../services/userService.js';
+import { useState, createContext, useContext } from 'react';
+import * as userService from '../services/userService';
 import { toast } from 'react-toastify';
 
-const AuthContext = createContext('');
+const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(userService.getUser());
@@ -12,8 +12,8 @@ export const AuthProvider = ({ children }) => {
       const user = await userService.login(email, password);
       setUser(user);
       toast.success('Login Successful');
-    } catch (e) {
-      toast.error(e.response.data);
+    } catch (err) {
+      toast.error(err.response.data);
     }
   };
 
@@ -26,18 +26,32 @@ export const AuthProvider = ({ children }) => {
       toast.error(err.response.data);
     }
   };
-  
+
   const logout = () => {
     userService.logout();
-    setUser('null');
-    toast.success('Log out successfully!')
+    setUser(null);
+    toast.success('Logout Successful');
   };
+
+  const updateProfile = async user => {
+    const updatedUser = await userService.updateProfile(user);
+    toast.success('Profile Update Was Successfull');
+    if (updatedUser) setUser(updatedUser);
+  }
+
+  const changePassword = async passwords => {
+    await userService.changePassword(passwords);
+    logout();
+    toast.success('Password Changed Successfully, Please Login Again!');
+  };
+
   return (
-    <AuthContext.Provider value={{ user, login, logout, register }}>
+    <AuthContext.Provider
+      value={{ user, login, logout, register, updateProfile, changePassword }}
+    >
       {children}
     </AuthContext.Provider>
-  )
-}
+  );
+};
 
 export const useAuth = () => useContext(AuthContext);
-

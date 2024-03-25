@@ -9,6 +9,7 @@ import AuthRoute from './components/AuthRoute/AuthRoute'
 import CheckoutPage from './pages/Checkout/CheckoutPage'
 import PaymentPage from './pages/Payment/PaymentPage'
 import OrderTrackPage from './pages/OrderTrack/OrderTrackPage'
+import ProfilePage from './pages/Profile/ProfilePage'
 
 export default function AppRoutes() {
   return (
@@ -32,6 +33,10 @@ export default function AppRoutes() {
   <Route path="/track/:orderId" element={
     <AuthRoute>
       <OrderTrackPage/>
+    </AuthRoute>}/>
+  <Route path="/profile/" element={
+    <AuthRoute>
+      <ProfilePage/>
     </AuthRoute>}/>
   </Routes>
     </div>
