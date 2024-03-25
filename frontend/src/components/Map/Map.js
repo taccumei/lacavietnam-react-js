@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'; // useState: position on the map, useEffect: handling readonly mode
+import React, { useState, useEffect } from 'react';
+// useState: position on the map, useEffect: handling readonly mode
 import classes from './map.module.css';
 import 'leaflet/dist/leaflet.css';
 import {
