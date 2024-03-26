@@ -10,6 +10,7 @@ import CheckoutPage from './pages/Checkout/CheckoutPage'
 import PaymentPage from './pages/Payment/PaymentPage'
 import OrderTrackPage from './pages/OrderTrack/OrderTrackPage'
 import ProfilePage from './pages/Profile/ProfilePage'
+import OrderPage from './pages/Orders/OrderPage'
 
 export default function AppRoutes() {
   return (
@@ -35,8 +36,12 @@ export default function AppRoutes() {
       <OrderTrackPage/>
     </AuthRoute>}/>
   <Route path="/profile/" element={
-    <AuthRoute>
+    <AuthRoute>s
       <ProfilePage/>
+    </AuthRoute>}/>
+  <Route path="/orders/:filter?" element={
+    <AuthRoute>
+      <OrderPage/>
     </AuthRoute>}/>
   </Routes>
     </div>

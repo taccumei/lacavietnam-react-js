@@ -75,6 +75,27 @@ router.get(
     return res.send(order);
   }));
 
+  router.get(
+  '/allStatus', (req, res) => {
+    const allStatus = Object.values(OrderStatus);
+    console.log(allStatus);
+  res.send(allStatus);
+});
+
+router.get(
+  '/:status?',
+  handler(async (req, res) => {
+    const status = req.params.status;
+    const user = await UserModel.findById(req.user.id);
+    const filter = {};
+
+    if (!user.isAdmin) filter.user = user._id;
+    if (status) filter.status = status;
+
+    const orders = await OrderModel.find(filter).sort('-createdAt');
+    res.send(orders);
+  })
+);
 
 const getNewOrderForCurrentUser = async req =>
   await OrderModel.findOne({ user: req.user.id, status: OrderStatus.NEW });
