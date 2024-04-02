@@ -12,6 +12,7 @@ import OrderTrackPage from './pages/OrderTrack/OrderTrackPage'
 import ProfilePage from './pages/Profile/ProfilePage'
 import OrderPage from './pages/Orders/OrderPage'
 import Dashboard from './pages/Dashboard/Dashboard'
+import AdminRoute from './components/AdminRoute/AdminRoute'
 
 export default function AppRoutes() {
   return (
@@ -47,6 +48,10 @@ export default function AppRoutes() {
   <Route path="/dashboard" element={
     <AuthRoute>
       <Dashboard/>
+    </AuthRoute>}/>
+  <Route path="/admin/foods/:searchTerm?" element={
+    <AuthRoute>
+      <AdminRoute/>
     </AuthRoute>}/>
   </Routes>
     </div>
