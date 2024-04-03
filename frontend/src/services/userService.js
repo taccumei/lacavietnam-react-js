@@ -44,3 +44,7 @@ export const getById = async userId => {
   const { data } = await axios.put('/api/users/getById/' + userId);
   return data;
 }
+export const updateUser = async userData => {
+  const { data } = await axios.put('/api/users/update/', userData );
+  return data;
+}
