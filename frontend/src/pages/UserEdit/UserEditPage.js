@@ -6,7 +6,7 @@ import classes from './usereditpage.module.css';
 import Title from '../../components/Title/Title';
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
-import { EMAIL } from '../../constants/pattern';
+import { EMAIL } from '../../constants/pattern.js';
 
 export default function UserEditPage() {
   const {

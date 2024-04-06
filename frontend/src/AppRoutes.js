@@ -29,55 +29,55 @@ export default function AppRoutes() {
         <Route path="/cart" element={<CartPage/>}/>
         <Route path="/login" element={<LoginPage/>}/>
         <Route path="/register" element={<RegisterPage/>}/>
-  <Route path="/checkout" element={
-    <AuthRoute>
-      <CheckoutPage/>
-    </AuthRoute>}/>
-  <Route path="/payment" element={
-    <AuthRoute>
-      <PaymentPage/>
-    </AuthRoute>}/>
-  <Route path="/track/:orderId" element={
-    <AuthRoute>
-      <OrderTrackPage/>
-    </AuthRoute>}/>
-  <Route path="/profile/" element={
-    <AuthRoute>s
-      <ProfilePage/>
-    </AuthRoute>}/>
-  <Route path="/orders/:filter?" element={
-    <AuthRoute>
-      <OrderPage/>
-    </AuthRoute>}/>
-  <Route path="/dashboard" element={
-    <AuthRoute>
-      <Dashboard/>
-    </AuthRoute>}/>
-  <Route path="/admin/foods/:searchTerm?" element={
-    <AdminRoute>
-      <FoodsAdminPage/>
-    </AdminRoute>}/>
-  <Route path="/admin/addFood" element={
-    <AdminRoute>
-      <FoodEditPage/>
-    </AdminRoute>}/>
-  <Route path="/admin/editFood/:foodId" element={
-    <AdminRoute>
-      <FoodEditPage/>
-    </AdminRoute>}/>
-  <Route path="/admin/editFood/:foodId" element={
-    <AdminRoute>
-      <FoodEditPage/>
-    </AdminRoute>}/>
-  <Route path="/admin/users/:searchTerm?" element={
-    <AdminRoute>
-      <UsersPage/>
-    </AdminRoute>}/>
-  <Route path="/admin/editUser/:userId?" element={
-    <AdminRoute>
-      <UserEditPage/>
-    </AdminRoute>}/>
-  </Routes>
+        <Route path="/checkout" element={
+          <AuthRoute>
+            <CheckoutPage/>
+          </AuthRoute>}/>
+        <Route path="/payment" element={
+          <AuthRoute>
+            <PaymentPage/>
+          </AuthRoute>}/>
+        <Route path="/track/:orderId" element={
+          <AuthRoute>
+            <OrderTrackPage/>
+          </AuthRoute>}/>
+        <Route path="/profile/" element={
+          <AuthRoute>s
+            <ProfilePage/>
+          </AuthRoute>}/>
+        <Route path="/orders/:filter?" element={
+          <AuthRoute>
+            <OrderPage/>
+          </AuthRoute>}/>
+        <Route path="/dashboard" element={
+          <AuthRoute>
+            <Dashboard/>
+          </AuthRoute>}/>
+        <Route path="/admin/foods/:searchTerm?" element={
+          <AdminRoute>
+            <FoodsAdminPage/>
+          </AdminRoute>}/>
+        <Route path="/admin/addFood" element={
+          <AdminRoute>
+            <FoodEditPage/>
+          </AdminRoute>}/>
+        <Route path="/admin/editFood/:foodId" element={
+          <AdminRoute>
+            <FoodEditPage/>
+          </AdminRoute>}/>
+        <Route path="/admin/editFood/:foodId" element={
+          <AdminRoute>
+            <FoodEditPage/>
+          </AdminRoute>}/>
+        <Route path="/admin/users/:searchTerm?" element={
+          <AdminRoute>
+            <UsersPage/>
+          </AdminRoute>}/>
+        <Route path="/admin/editUser/:userId" element={
+          <AdminRoute>
+            <UserEditPage />
+          </AdminRoute>}/>
+      </Routes>
     </div>
   )
 }

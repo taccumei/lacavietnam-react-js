@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react'
+
+import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { useAuth } from '../../hooks/useAuth';
 import { getAll, toggleBlock } from '../../services/userService';
 import classes from './userspage.module.css';
 import Title from '../../components/Title/Title';
-import { useAuth } from '../../hooks/useAuth';
 import Search from '../../components/Search/Search';
 
 export default function UsersPage() {
-
   const [users, setUsers] = useState();
   const { searchTerm } = useParams();
   const auth = useAuth();
@@ -19,13 +19,16 @@ export default function UsersPage() {
   const loadUsers = async () => {
     const users = await getAll(searchTerm);
     setUsers(users);
-  }
+  };
 
-  const handleToggleBlock = async (userId) => {
+  const handleToggleBlock = async userId => {
     const isBlocked = await toggleBlock(userId);
 
-    setUsers(oldUsers => oldUsers.map(user=>user.id === userId?{...user, isBlocked}: user))
-   };
+    setUsers(oldUsers =>
+      oldUsers.map(user => (user.id === userId ? { ...user, isBlocked } : user))
+    );
+  };
+
   return (
     <div className={classes.container}>
       <div className={classes.list}>
@@ -33,8 +36,8 @@ export default function UsersPage() {
         <Search
           searchRoute="/admin/users/"
           defaultRoute="/admin/users"
-          margin="1rem 0"
           placeholder="Search Users"
+          margin="1rem 0"
         />
         <div className={classes.list_item}>
           <h3>Name</h3>
@@ -43,8 +46,7 @@ export default function UsersPage() {
           <h3>Admin</h3>
           <h3>Actions</h3>
         </div>
-        {
-          users &&
+        {users &&
           users.map(user => (
             <div key={user.id} className={classes.list_item}>
               <span>{user.name}</span>
@@ -53,17 +55,15 @@ export default function UsersPage() {
               <span>{user.isAdmin ? '✅' : '❌'}</span>
               <span className={classes.actions}>
                 <Link to={'/admin/editUser/' + user.id}>Edit</Link>
-                {
-                  auth.user.id !== user.id &&(
+                {auth.user.id !== user.id && (
                   <Link onClick={() => handleToggleBlock(user.id)}>
-                    {user.isBlocked? 'Unblock': 'Block'}
+                    {user.isBlocked ? 'Unblock' : 'Block'}
                   </Link>
                 )}
               </span>
             </div>
-          ))
-        }
+          ))}
       </div>
     </div>
-  )
+  );
 }

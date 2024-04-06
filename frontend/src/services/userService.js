@@ -41,7 +41,7 @@ export const toggleBlock = async userId => {
   return data;
 }
 export const getById = async userId => {
-  const { data } = await axios.put('/api/users/getById/' + userId);
+  const { data } = await axios.get('/api/users/getById/' + userId);
   return data;
 }
 export const updateUser = async userData => {

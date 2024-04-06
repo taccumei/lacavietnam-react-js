@@ -1,32 +1,14 @@
 import { Router } from 'express';
-// import { sample_users } from '../data.js';
 import jwt from 'jsonwebtoken';
+const router = Router();
+import { BAD_REQUEST } from '../constanst/httpStatus.js';
 import handler from 'express-async-handler';
 import { UserModel } from '../Models/user.model.js';
 import bcrypt from 'bcryptjs';
 import auth from '../middleware/auth.mid.js';
-import { BAD_REQUEST } from '../constanst/httpStatus.js';
 import admin from '../middleware/admin.mid.js';
-
 const PASSWORD_HASH_SALT_ROUNDS = 10;
 
-
-const router = Router();
-
-// router.post('/login',(req, res) => {
-//   const { email, password } = req.body;
-
-//   const user = sample_users.find(
-//     user => user.email === email && user.password === password
-//   );
-
-//   if (user) {
-//     res.send(generateTokenResponse(user));
-//     return;
-//   }
-
-//   res.status(BAD_REQUEST).send('Username or password is invalid');
-// });
 router.post(
   '/login',
   handler(async (req, res) => {
@@ -112,7 +94,8 @@ router.put(
   })
 );
 
-router.get('/getall/:searchTerm?',
+router.get(
+  '/getall/:searchTerm?',
   admin,
   handler(async (req, res) => {
     const { searchTerm } = req.params;
@@ -120,18 +103,20 @@ router.get('/getall/:searchTerm?',
     const filter = searchTerm
       ? { name: { $regex: new RegExp(searchTerm, 'i') } }
       : {};
+
     const users = await UserModel.find(filter, { password: 0 });
     res.send(users);
   })
 );
 
-router.put('/toggleBlock/:userId',
+router.put(
+  '/toggleBlock/:userId',
   admin,
-  handler(async (req, res)=> {
+  handler(async (req, res) => {
     const { userId } = req.params;
 
     if (userId === req.user.id) {
-      res.status(BAD_REQUEST).send("Cant block yourself");
+      res.status(BAD_REQUEST).send("Can't block yourself!");
       return;
     }
 
@@ -140,38 +125,46 @@ router.put('/toggleBlock/:userId',
     user.save();
 
     res.send(user.isBlocked);
-  }))
+  })
+);
 
-router.get('/getById/:userId',
+router.get(
+  '/getById/:userId',
   admin,
-  handler(async (req, res)=> {
+  handler(async (req, res) => {
     const { userId } = req.params;
     const user = await UserModel.findById(userId, { password: 0 });
     res.send(user);
-  }))
+  })
+);
 
-router.put('/update',
+router.put(
+  '/update',
   admin,
-  handler(async (req, res)=> {
+  handler(async (req, res) => {
     const { id, name, email, address, isAdmin } = req.body;
     await UserModel.findByIdAndUpdate(id, {
       name,
-      email, 
+      email,
       address,
-      isAdmin
+      isAdmin,
     });
+
     res.send();
-}))
+  })
+);
 
 const generateTokenResponse = user => {
-  const token = jwt.sign({
-    id: user.id,
-    email: user.email,
-    isAdmin: user.isAdmin,
-  },
-    process.env.JWT_SECRET, {
-    expiresIn: '30d'
-  }
+  const token = jwt.sign(
+    {
+      id: user.id,
+      email: user.email,
+      isAdmin: user.isAdmin,
+    },
+    process.env.JWT_SECRET,
+    {
+      expiresIn: '30d',
+    }
   );
 
   return {
@@ -181,7 +174,7 @@ const generateTokenResponse = user => {
     address: user.address,
     isAdmin: user.isAdmin,
     token,
-  }
-}
+  };
+};
 
 export default router;

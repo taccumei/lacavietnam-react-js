@@ -56,10 +56,14 @@ export default function CartPage() {
             </div>
           </div>
           <Link to="/checkout">Proceed To Checkout</Link>
-          </div>
+        </div>
       </div>  
           )
-    }
+      }
+      
+      <div className={classes.addmore}>
+        <a href='/'>Add more +</a>
+      </div>
     </>
   )
 }

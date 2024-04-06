@@ -5,6 +5,7 @@ import { BAD_REQUEST } from '../constanst/httpStatus.js';
 import { OrderStatus } from '../constanst/orderStatus.js';
 import { OrderModel } from '../Models/order.model.js';
 import { UserModel } from '../Models/user.model.js';
+import { sendEmailReceipt } from '../helpers/mail.helper.js';
 
 const router = Router();
 router.use(auth);
@@ -29,12 +30,14 @@ router.post(
   })
 );
 
-router.get('/newOrderForCurrentUser',
+router.get(
+  '/newOrderForCurrentUser',
   handler(async (req, res) => {
     const order = await getNewOrderForCurrentUser(req);
     if (order) res.send(order);
-    else res.status(BAD_REQUEST).send()
-  }))
+    else res.status(BAD_REQUEST).send();
+  })
+);
 
 router.put(
   '/pay',
@@ -49,6 +52,8 @@ router.put(
     order.paymentId = paymentId;
     order.status = OrderStatus.PAYED;
     await order.save();
+
+    sendEmailReceipt(order);
 
     res.send(order._id);
   })
@@ -73,7 +78,8 @@ router.get(
     if (!order) return res.send(UNAUTHORIZED);
 
     return res.send(order);
-  }));
+  })
+);
 
   router.get(
   '/allStatus', (req, res) => {
@@ -98,6 +104,9 @@ router.get(
 );
 
 const getNewOrderForCurrentUser = async req =>
-  await OrderModel.findOne({ user: req.user.id, status: OrderStatus.NEW });
+  await OrderModel.findOne({
+    user: req.user.id,
+    status: OrderStatus.NEW,
+  }).populate('user');
 
 export default router;

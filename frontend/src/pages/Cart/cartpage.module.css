@@ -119,3 +119,12 @@
   opacity: 0.8;
   cursor: pointer;
 }
+
+.addmore a{
+  width: fit-content;
+  border-radius: 2rem;
+  padding: 8px;
+  color: white;
+  background-color: #6D2932;
+  margin-left: 20rem;
+}
